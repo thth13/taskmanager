@@ -1,0 +1,10 @@
+.pageList {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.pageListButton {
+	height: 35px;
+	min-width: 35px;
+	font-size: 15px;
+}

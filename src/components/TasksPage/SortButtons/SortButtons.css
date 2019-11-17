@@ -1,0 +1,7 @@
+.sortGroup {
+	margin-right: 100px;
+}
+
+.selected {
+	border-bottom: 2px solid royalblue;
+}
