@@ -1,10 +1,10 @@
 export const setSortDirection = name => ({
-  type: 'SORT_DIRECTION',
+  type: 'SET_SORT_DIRECTION',
   payload: name,
 });
 
 export const setSortField = name => ({
-  type: 'SORT_FIELD',
+  type: 'SET_SORT_FIELD',
   payload: name,
 });
 

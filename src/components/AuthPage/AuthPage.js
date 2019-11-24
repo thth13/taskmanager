@@ -14,9 +14,9 @@ class AuthPage extends Component {
   };
 
   componentDidMount = () => {
-    const { isAuth } = this.props.auth;
+    const { isLoggedIn } = this.props.auth;
 
-    if (isAuth) {
+    if (isLoggedIn) {
       this.props.history.push('/');
     }
   };
@@ -67,7 +67,7 @@ class AuthPage extends Component {
       <form onSubmit={this.onSubmit} className="login-form">
         <h2 className="enter-text">Вход</h2>
         <input
-          className="login-input error"
+          className="login-input"
           placeholder="Логин"
           type="text"
           name="name"
@@ -77,7 +77,7 @@ class AuthPage extends Component {
         />
         {errors.name && <span className="error-label">{errors.name}</span>}
         <input
-          className="login-input error"
+          className="login-input"
           placeholder="Пароль"
           type="password"
           name="password"

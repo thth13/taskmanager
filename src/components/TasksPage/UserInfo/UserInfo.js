@@ -14,7 +14,7 @@ const UserInfo = props => {
 
   return (
     <div className="profile">
-      {props.auth.isAuth ? (
+      {props.auth.isLoggedIn ? (
         <Fragment>
           <span className="profile-userName">admin</span>
           <span className="profile-logout" onClick={logout}>Выход</span>

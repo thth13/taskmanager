@@ -12,7 +12,7 @@ export const signIn = (user, history) => dispatch => {
   .then(res => {
     if (res.data.status === 'error') {
       dispatch({
-        type: 'GET_ERRORS',
+        type: 'SET_ERRORS',
         payload: res.data.message
       });
     } else {

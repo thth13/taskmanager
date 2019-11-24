@@ -7,13 +7,13 @@ const initialState = {
 
 const params = (state = initialState, action) => {
   switch (action.type) {
-    case 'SORT_FIELD':
+    case 'SET_SORT_FIELD':
       return {
         ...state,
         sort_field: action.payload,
         page: 1,
       };
-    case 'SORT_DIRECTION':
+    case 'SET_SORT_DIRECTION':
       return {
         ...state,
         sort_direction: action.payload,

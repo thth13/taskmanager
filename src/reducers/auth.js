@@ -1,7 +1,7 @@
 import isEmpty from '../utils/is-empty';
 
 const initialState = {
-  isAuth: false,
+  isLoggedIn: false,
   token: '',
 };
 
@@ -9,7 +9,7 @@ const auth = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_CURRENT_USER':
       return {
-        isAuth: !isEmpty(action.payload),
+        isLoggedIn: !isEmpty(action.payload),
         token: action.payload,
       };
     default:

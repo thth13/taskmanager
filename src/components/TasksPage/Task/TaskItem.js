@@ -55,7 +55,7 @@ class TaskItem extends Component {
 
   render() {
     const { username, email, text, status, id } = this.props.task;
-    const { isAuth } = this.props.auth;
+    const { isLoggedIn } = this.props.auth;
     const { form } = this.props;
     const { editField, isEditedByAdmin } = this.state;
 
@@ -88,7 +88,7 @@ class TaskItem extends Component {
                 <span className="taskInfo-label">Текст задачи:</span>
                 {text.length > 2000 ? <p className="errorTextSize">Ошибка! Текст задачи содержит больше 2000 символов</p> : <p>{text}</p>}
               </div>
-              {isAuth && (
+              {isLoggedIn && (
                 <div className="taskItem-actions">
                   <button
                     name="editStatusButton"
