@@ -1,5 +1,5 @@
 const initialState = {
-  developer: 'thth1234',
+  developer: 'thth',
   sort_field: 'id',
   sort_direction: 'desc',
   page: 1,

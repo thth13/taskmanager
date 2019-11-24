@@ -44,10 +44,14 @@
 .taskInfo-label {
 	margin-right: 15px;
 	color: #81868b;
+	max-width: 200px;
+	max-height: 50px;
+	overflow: hidden;
 }
 
 .taskInfo-label span {
 	font-weight: bold;
+	word-wrap: break-word;
 }
 
 .taskText-input {

@@ -86,7 +86,9 @@ class TaskItem extends Component {
             <Fragment>
               <div className="taskText">
                 <span className="taskInfo-label">Текст задачи:</span>
-                <p>{text}</p>
+                <p>
+                  {text.length > 2000 ? 'Невозможно отобразить текст длинее 2000 символов' : text}
+                </p>
               </div>
               {isAuth && (
                 <div className="taskItem-actions">
@@ -109,7 +111,7 @@ class TaskItem extends Component {
         )}
         <div className="taskInfo">
           <span className="taskInfo-label">
-            Имя пользоателя: <span>{username}</span>
+            Имя пользователя: <span>{username}</span>
           </span>
           <span className="taskInfo-label">
             email: <span>{email}</span>
