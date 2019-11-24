@@ -100,3 +100,8 @@
 	font-weight: bold;
 	color: green;
 }
+
+.errorTextSize {
+	opacity: 0.4;
+	font-weight: bold;
+}
