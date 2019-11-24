@@ -8,10 +8,16 @@ import TasksPage from './components/TasksPage/TasksPage';
 import AuthPage from './components/AuthPage/AuthPage';
 
 if (localStorage.token) {
-  store.dispatch(setCurrentUser(localStorage.token));
+  if(localStorage.expDateToken < Date.now()) {
+    localStorage.setItem('', localStorage.token);
+  } else {
+    store.dispatch(setCurrentUser(localStorage.token));
+  }
 }
 
 function App() {
+  // console.log(new Date())
+  // console.log(Date.now() + 86400000)
   return (
     <Provider store={store}>
       <Router>

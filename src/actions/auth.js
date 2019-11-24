@@ -17,8 +17,11 @@ export const signIn = (user, history) => dispatch => {
       });
     } else {
       const { token } = res.data.message;
-      
+      const expDate = Date.now() + 86400000;
+
       localStorage.setItem('token', token);
+      localStorage.setItem('expDateToken', expDate);
+
       dispatch(setCurrentUser(token));
 
       history.push('/');
