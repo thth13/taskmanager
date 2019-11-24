@@ -22,13 +22,10 @@ class TaskList extends Component {
   };
 
   render() {
-    const { tasks, notification } = this.props;
+    const { tasks } = this.props;
 
     return (
       <div>
-        {notification !== '' && (
-          <div className="notification">{notification}</div>
-        )}
         {tasks.length === 0 ? (
           <TaskLoading />
         ) : (
@@ -44,7 +41,6 @@ class TaskList extends Component {
 const mapStateToProps = state => ({
   tasks: state.tasks.tasks,
   params: state.params,
-  notification: state.notification,
 });
 
 TaskList.propTypes = {
@@ -58,7 +54,6 @@ TaskList.propTypes = {
     }).isRequired
   ).isRequired,
   params: PropTypes.object.isRequired,
-  notification: PropTypes.string.isRequired,
   loadTasks: PropTypes.func.isRequired,
   setFilters: PropTypes.func.isRequired,
 };

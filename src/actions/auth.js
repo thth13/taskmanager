@@ -27,7 +27,10 @@ export const signIn = (user, history) => dispatch => {
       history.push('/');
     }
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    alert("Ошибка сервера");
+    console.log(err);
+  });
 };
 
 export const setCurrentUser = token => {

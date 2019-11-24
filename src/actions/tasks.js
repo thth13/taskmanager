@@ -7,13 +7,19 @@ export const loadTasks = params => dispatch => {
   axios.get(url, {
     params: params
   })
-  .then(res => 
+  .then(res =>
     dispatch({
       type: 'LOAD_TASKS',
       payload: res.data.message
     }) 
   )
-  .catch(err => console.log(err));
+  .catch(err => {
+    dispatch(showNotification({
+      type: 'error', 
+      text: 'Ошибка! Невозможно загрузить задачи'
+    }));
+    console.log(err);
+  });
 };
 
 export const editTask = (task, developer) => dispatch => {
@@ -24,13 +30,26 @@ export const editTask = (task, developer) => dispatch => {
   formData.append('status', task.status);
 
   axios.post(`${url}/edit/${task.id}?developer=${developer}`, formData)
-    .then(res =>
+    .then(res => {
+      if (res.data.status === 'error') {
+        dispatch(showNotification({
+          type: 'error', 
+          text: 'Ошибка! Не удалось отредактировать задачу'
+        }));
+        console.log(res.data.message);
+      }
       dispatch({
         type: 'EDIT_TASK',
         payload: task
       })
-    )
-    .catch(err => console.log(err))
+    })
+    .catch(err => {
+      dispatch(showNotification({
+          type: 'error', 
+          text: 'Ошибка! Не удалось отредактировать задачу'
+        }));
+      console.log(err);
+    })
 };
 
 export const addTask = (task, params) => dispatch => {
@@ -42,8 +61,27 @@ export const addTask = (task, params) => dispatch => {
 
   axios.post(`${url}/create?developer=${params.developer}`, formData)
     .then(res => {
-      dispatch(loadTasks(params));
-      dispatch(showNotification('Задача успешно добавлена'))
+      if (res.data.status === 'error') {
+        dispatch(showNotification({
+          type: 'error', 
+          text: 'Ошибка! Не удалось добавить задачу'
+        }));
+        console.log(res.data.message);
+      } else {
+        dispatch(loadTasks(params));
+
+        dispatch(showNotification({
+          type: 'success', 
+          text: 'Задача успешено добавлена'
+        }));
+      }
+
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      dispatch(showNotification({
+        type: 'error', 
+        text: 'Ошибка. Не удалось добавить задачу'
+      }));
+      console.log(err)
+    });
 };

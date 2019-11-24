@@ -1,10 +1,10 @@
-export const showNotification = text => dispatch => {
+export const showNotification = data => dispatch => {
   dispatch({
-    type: 'SHOW_NOTIFICATION',
-    payload: text,
+    type: 'NEW_NOTIFICATION',
+    payload: data,
   });
 
   setTimeout(() => {
-    dispatch({ type: 'HIDE_NOTIFICATION' })
+    dispatch({ type: 'REMOVE_NOTIFICATION' })
   }, 4000)
 };
