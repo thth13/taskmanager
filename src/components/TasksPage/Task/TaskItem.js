@@ -25,7 +25,7 @@ class TaskItem extends Component {
     e.preventDefault();
     const { editField } = this.state;
     const { editTask, task, setOpenForm, params } = this.props;
-    
+
     let newStatus = task.status;
 
     if (e.target.name === 'editStatusButton') {
@@ -86,14 +86,17 @@ class TaskItem extends Component {
             <Fragment>
               <div className="taskText">
                 <span className="taskInfo-label">Текст задачи:</span>
-                {text.length > 2000 ? <p className="errorTextSize">Ошибка! Текст задачи содержит больше 2000 символов</p> : <p>{text}</p>}
+                {text.length > 2000 ? (
+                  <p className="errorTextSize">
+                    Ошибка! Текст задачи содержит больше 2000 символов
+                  </p>
+                ) : (
+                  <p>{text}</p>
+                )}
               </div>
               {isLoggedIn && (
                 <div className="taskItem-actions">
-                  <button
-                    name="editStatusButton"
-                    onClick={this.editTask}
-                  >
+                  <button name="editStatusButton" onClick={this.editTask}>
                     {status === 0 ? 'Выполнено' : 'Не выполнено'}
                   </button>
                   <button id={id} onClick={this.setEdit}>
@@ -131,7 +134,7 @@ class TaskItem extends Component {
 const mapStateToProps = state => ({
   auth: state.auth,
   form: state.form,
-  params: state.params
+  params: state.params,
 });
 
 TaskItem.propTypes = {

@@ -26,7 +26,7 @@
 	flex-direction: column;
 }
 
-.newTaskForm input {
+.newTask-field {
 	border: 0;
 	width: 550px;
 	height: 50px;
@@ -44,8 +44,12 @@
 	background-color: #F4F4F4;
 }
 
-.error {
+.errorNewTask-label {
 	color: red;
 	font-size: 12px;
 	margin-top: 10px;
+}
+
+.newTask-fieldError {
+	border-bottom: 1px solid red;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -20,16 +21,16 @@ class AuthPage extends Component {
       this.props.history.push('/');
     }
   };
-  
+
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (Object.keys(nextProps.errors).length !== 0) {
       return {
-        errors: nextProps.errors
-      }
+        errors: nextProps.errors,
+      };
     }
 
     return null;
-  }
+  };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -39,7 +40,7 @@ class AuthPage extends Component {
     e.preventDefault();
     const { name, password } = this.state;
     const { history, clearErrors } = this.props;
-    
+
     const errors = {};
     clearErrors();
 
@@ -64,28 +65,30 @@ class AuthPage extends Component {
     const { errors, name, password } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit} className="login-form">
+      <form onSubmit={this.onSubmit} className="auth-form">
         <h2 className="enter-text">Вход</h2>
         <input
-          className="login-input"
           placeholder="Логин"
           type="text"
           name="name"
           value={name}
           onChange={this.onChange}
-          style={errors.name ? { borderColor: 'red' } : {}}
+          className={classnames('auth-field', {
+            'error-input': errors.name,
+          })}
         />
         {errors.name && <span className="error-label">{errors.name}</span>}
         <input
-          className="login-input"
           placeholder="Пароль"
           type="password"
           name="password"
           value={password}
           onChange={this.onChange}
-          style={errors.password ? { borderColor: 'red' } : {}}
+          className={classnames('auth-field', {
+            'error-input': errors.password,
+          })}
         />
-        {errors.password && <span className="error-label">{errors.password}</span>}
+        {errors.password && (<span className="error-label">{errors.password}</span>)}
         <button type="submit">Войти</button>
       </form>
     );
@@ -106,6 +109,6 @@ AuthPage.propTypes = {
 };
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps, 
   { signIn, logoutUser, clearErrors }
 )(AuthPage);

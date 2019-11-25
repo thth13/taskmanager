@@ -16,6 +16,8 @@ const SortButtons = props => {
       props.setSortField(name);
     }
   };
+  
+  const { params } = props;
 
   return (
     <Fragment>
@@ -24,10 +26,8 @@ const SortButtons = props => {
         <button
           name="id"
           onClick={setSort}
-          style={
-            props.params.sort_field === 'id'
-              ? { borderBottom: '2px solid royalblue' }
-              : {}
+          className={
+            params.sort_field === 'id' ? 'selectedButton' : ''
           }
         >
           ID
@@ -35,10 +35,8 @@ const SortButtons = props => {
         <button
           name="username"
           onClick={setSort}
-          style={
-            props.params.sort_field === 'username'
-              ? { borderBottom: '2px solid royalblue' }
-              : {}
+          className={
+            params.sort_field === 'username' ? 'selectedButton' : ''
           }
         >
           Имя пользователя
@@ -46,10 +44,8 @@ const SortButtons = props => {
         <button
           name="email"
           onClick={setSort}
-          style={
-            props.params.sort_field === 'email'
-              ? { borderBottom: '2px solid royalblue' }
-              : {}
+          className={
+            params.sort_field === 'email' ? 'selectedButton' : ''
           }
         >
           Email
@@ -57,10 +53,8 @@ const SortButtons = props => {
         <button
           name="status"
           onClick={setSort}
-          style={
-            props.params.sort_field === 'status'
-              ? { borderBottom: '2px solid royalblue' }
-              : {}
+          className={
+            params.sort_field === 'status' ? 'selectedButton' : ''
           }
         >
           Статус
@@ -71,10 +65,8 @@ const SortButtons = props => {
         <button
           name="asc"
           onClick={setSort}
-          style={
-            props.params.sort_direction === 'asc'
-              ? { borderBottom: '2px solid royalblue' }
-              : {}
+          className={
+            params.sort_direction === 'asc' ? 'selectedButton' : ''
           }
         >
           ASC
@@ -82,12 +74,9 @@ const SortButtons = props => {
         <button
           name="desc"
           onClick={setSort}
-          style={
-            props.params.sort_direction === 'desc'
-              ? { borderBottom: '2px solid royalblue' }
-              : {}
+          className={
+            params.sort_direction === 'desc' ? 'selectedButton' : ''
           }
-          className="button"
         >
           DESC
         </button>

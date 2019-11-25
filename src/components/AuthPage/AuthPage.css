@@ -1,4 +1,4 @@
-.login-form {
+.auth-form {
 	width: 400px;
 	height: 300px;
 	display: flex;
@@ -15,7 +15,7 @@
 	border-color: #e0e0e0;
 }
 
-.login-input {
+.auth-field {
 	width: 50px;
 	border-radius: 8px;
 	border: 1px solid transparent;
@@ -40,4 +40,8 @@
 	margin-bottom: 10px;
 	margin-right: auto;
 	margin-left: 65px;
+}
+
+.error-input {
+	border-color: red;
 }

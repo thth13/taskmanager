@@ -19,21 +19,23 @@ const PageList = props => {
     }
   };
 
-  const addButton = (i) => {
+  const addButton = i => {
     const { page } = props;
+
+    var btnClass = 'pageListButton';
+    if (page === i) btnClass += ' selectedButton';
 
     return (
       <button
-          className="pageListButton"
-          style={page === i ? { borderBottom: '2px solid royalblue' } : {}}
-          id={i}
-          key={i}
-          onClick={setPage}
-        >
-          {i}
-        </button>
-      )
-  }
+        className={btnClass}
+        id={i}
+        key={i}
+        onClick={setPage}
+      >
+        {i}
+      </button>
+    );
+  };
 
   const pageNavigation = () => {
     const { pages, page } = props;
@@ -41,30 +43,30 @@ const PageList = props => {
 
     // Добавляем кнопку страницы 1
     if (pages > 1 || pages > 7) {
-      buttons.push(addButton(1))
+      buttons.push(addButton(1));
     }
 
     // Добавляем остальные кнопки
-    if (pages < page +7 && pages > 7) {
-      for (let i = pages -7; i < pages; i++) {
-        buttons.push(addButton(i))
+    if (pages < page + 7 && pages > 7) {
+      for (let i = pages - 7; i < pages; i++) {
+        buttons.push(addButton(i));
       }
     } else if (pages < 7 && page < 7) {
-      for (let i = 1; i < pages +1; i++) {
+      for (let i = 1; i < pages + 1; i++) {
         if (i <= 1) continue;
-        buttons.push(addButton(i))
+        buttons.push(addButton(i));
       }
-    } else if (pages > 1 || pages >= page +7) {
-      for (let i = page -1; i < pages +1; i++) {
+    } else if (pages > 1 || pages >= page + 7) {
+      for (let i = page - 1; i < pages + 1; i++) {
         if (i > page + 6) break;
         if (i <= 1) continue;
-        buttons.push(addButton(i))
+        buttons.push(addButton(i));
       }
     }
 
     // Добавляем кнопку последней страницы
     if (pages > 7) {
-      buttons.push(addButton(pages))
+      buttons.push(addButton(pages));
     }
 
     return buttons;
@@ -73,8 +75,9 @@ const PageList = props => {
   return (
     <div className="pageList">
       <button
-        style={props.page > 1 ? {} : { visibility: 'hidden' }}
-        className="pageListButton"
+        className={
+          props.page > 1 ? 'pageListButton' : 'pageListButton hideButton'
+        }
         name="decrement"
         onClick={setPage}
       >
@@ -82,8 +85,9 @@ const PageList = props => {
       </button>
       {pageNavigation()}
       <button
-        style={props.page < props.pages ? {} : { visibility: 'hidden' }}
-        className="pageListButton"
+        className={
+          props.page < props.pages ? 'pageListButton' : 'pageListButton hideButton'
+        }
         name="increment"
         onClick={setPage}
       >

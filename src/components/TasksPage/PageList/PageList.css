@@ -8,3 +8,11 @@
 	min-width: 35px;
 	font-size: 15px;
 }
+
+.selectedButton {
+	border-bottom: 2px solid royalblue;
+}
+
+.hideButton {
+	visibility: hidden;
+}

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { connect } from 'react-redux';
 
 import { addTask } from '../../../actions/tasks';
@@ -75,17 +76,17 @@ class NewTaskForm extends Component {
   render() {
     const { username, email, text, errors } = this.state;
     const { form } = this.props;
-
+    
     return (
       <Fragment>
         <div className="newTaskBody">
           {form === 'newTask' ? (
             <form onSubmit={this.addTask} className="newTaskForm">
               {(errors.username || errors.email === true || errors.text) && (
-                <span className="error">Нужно заполнить все поля</span>
+                <span className="errorNewTask-label">Нужно заполнить все поля</span>
               )}
               {errors.email === 'uncorrect' && (
-                <span className="error">Введите корректный email</span>
+                <span className="errorNewTask-label">Введите корректный email</span>
               )}
               <input
                 value={username}
@@ -93,30 +94,33 @@ class NewTaskForm extends Component {
                 name="username"
                 autoFocus
                 placeholder="Имя пользователя"
-                style={errors.username ? { borderBottom: '1px solid red' } : {}}
+                className={classnames('newTask-field', {
+                  'newTask-fieldError': errors.username,
+                })}
               />
               <input
                 value={email}
                 onChange={this.handleChange}
                 name="email"
                 placeholder="Email"
-                style={errors.email ? { borderBottom: '1px solid red' } : {}}
+                className={classnames('newTask-field', {
+                  'newTask-fieldError': errors.email,
+                })}
               />
               <input
                 value={text}
                 onChange={this.handleChange}
                 name="text"
                 placeholder="Задача"
-                style={errors.text ? { borderBottom: '1px solid red' } : {}}
+                className={classnames('newTask-field', {
+                  'newTask-fieldError': errors.text,
+                })}
               />
               <div className="actionButtons">
                 <button className="saveButton" type="submit">
                   Сохранить
                 </button>
-                <button
-                  className="cancelButton"
-                  onClick={this.setOpenForm}
-                >
+                <button className="cancelButton" onClick={this.setOpenForm}>
                   Отмена
                 </button>
               </div>
