@@ -30,7 +30,6 @@
 }
 
 .taskText {
-	margin-top: 25px;
 	outline: hidden;
 	word-wrap: break-word;
 	max-width: 440px;
@@ -63,6 +62,9 @@
 
 .taskItem-actions {
 	visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
 }
 
 .taskItem:hover .taskItem-actions {
