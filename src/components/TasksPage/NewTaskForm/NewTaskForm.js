@@ -113,6 +113,7 @@ class NewTaskForm extends Component {
                 onChange={this.handleChange}
                 name="text"
                 placeholder="Задача"
+                autoComplete='off'
                 className={classnames("newTask-field", {
                   "newTask-fieldError": errors.text,
                 })}

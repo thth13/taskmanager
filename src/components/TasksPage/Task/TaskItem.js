@@ -9,8 +9,7 @@ import './Task.css';
 
 class TaskItem extends Component {
   state = {
-    editField: this.props.task.text,
-    isEditedByAdmin: false,
+    editField: this.props.task.text.slice(0 ,this.props.task.text.indexOf('!(edited)!'))
   };
 
   setEdit = e => {
@@ -27,24 +26,18 @@ class TaskItem extends Component {
     const { editTask, task, setOpenForm, params } = this.props;
 
     let newStatus = task.status;
+    let isEditLabel = ' ';
 
     if (e.target.name === 'editStatusButton') {
-      if (task.status === 10) {
-        newStatus = 0;
-      } else {
-        newStatus = 10;
-      }
+      if ((task.text.indexOf('!(edited)!') + 1)) isEditLabel = '!(edited)!';
+      if (task.status === 10) newStatus = 0;
+      else newStatus = 10;
     } else {
-      //////////////////////////////////////////////////////////////////////////////
-      // Метку "отредактирвоано администратором" смог сделать только так
-      // После обновления страницы она будет исчезать
-      // Пытался с помощью status сохранять инфу о редактировании, но там можно только 0 и 10 указать
-      //////////////////////////////////////////////////////////////////////////////
-      this.setState({ isEditedByAdmin: true });
+      isEditLabel = '!(edited)!';
     }
 
     const data = {
-      text: editField,
+      text: editField + isEditLabel,
       id: task.id,
       status: newStatus,
     };
@@ -57,7 +50,7 @@ class TaskItem extends Component {
     const { username, email, text, status, id } = this.props.task;
     const { isLoggedIn } = this.props.auth;
     const { form } = this.props;
-    const { editField, isEditedByAdmin } = this.state;
+    const { editField } = this.state;
 
     return (
       <div className="taskItem">
@@ -91,7 +84,9 @@ class TaskItem extends Component {
                     Ошибка! Текст задачи содержит больше 2000 символов
                   </p>
                 ) : (
-                  <p>{text}</p>
+                  <p>
+                    {text.slice(0 ,text.indexOf('!(edited)!'))}
+                  </p>
                 )}
               </div>
               {isLoggedIn && (
@@ -107,9 +102,9 @@ class TaskItem extends Component {
             </Fragment>
           )}
         </div>
-        {isEditedByAdmin && (
+        {(text.indexOf('!(edited)!') + 1) ? (
           <span className="editByAdmin"> Отредактировано администратором</span>
-        )}
+        ) : <div />}
         <div className="taskInfo">
           <span className="taskInfo-label">
             Имя пользователя: <span>{username}</span>
