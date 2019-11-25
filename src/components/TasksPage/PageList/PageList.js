@@ -76,7 +76,7 @@ const PageList = props => {
     <div className="pageList">
       <button
         className={
-          props.page > 1 ? 'pageListButton' : 'pageListButton hideButton'
+          props.page > 1 ? "pageListButton" : "pageListButton hideButton"
         }
         name="decrement"
         onClick={setPage}
@@ -86,7 +86,7 @@ const PageList = props => {
       {pageNavigation()}
       <button
         className={
-          props.page < props.pages ? 'pageListButton' : 'pageListButton hideButton'
+          props.page < props.pages ? "pageListButton" : "pageListButton hideButton"
         }
         name="increment"
         onClick={setPage}

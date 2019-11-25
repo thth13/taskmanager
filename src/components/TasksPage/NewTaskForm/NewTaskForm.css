@@ -48,6 +48,8 @@
 	color: red;
 	font-size: 12px;
 	margin-top: 10px;
+	margin-bottom: 5px;
+	line-height: 7px;
 }
 
 .newTask-fieldError {

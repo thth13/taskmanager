@@ -27,7 +27,7 @@ const SortButtons = props => {
           name="id"
           onClick={setSort}
           className={
-            params.sort_field === 'id' ? 'selectedButton' : ''
+            params.sort_field === "id" ? "selectedButton" : ""
           }
         >
           ID
@@ -36,7 +36,7 @@ const SortButtons = props => {
           name="username"
           onClick={setSort}
           className={
-            params.sort_field === 'username' ? 'selectedButton' : ''
+            params.sort_field === "username" ? "selectedButton" : ""
           }
         >
           Имя пользователя
@@ -45,7 +45,7 @@ const SortButtons = props => {
           name="email"
           onClick={setSort}
           className={
-            params.sort_field === 'email' ? 'selectedButton' : ''
+            params.sort_field === "email" ? "selectedButton" : ""
           }
         >
           Email
@@ -54,7 +54,7 @@ const SortButtons = props => {
           name="status"
           onClick={setSort}
           className={
-            params.sort_field === 'status' ? 'selectedButton' : ''
+            params.sort_field === "status" ? "selectedButton" : ""
           }
         >
           Статус
@@ -66,7 +66,7 @@ const SortButtons = props => {
           name="asc"
           onClick={setSort}
           className={
-            params.sort_direction === 'asc' ? 'selectedButton' : ''
+            params.sort_direction === "asc" ? "selectedButton" : ""
           }
         >
           ASC
@@ -75,7 +75,7 @@ const SortButtons = props => {
           name="desc"
           onClick={setSort}
           className={
-            params.sort_direction === 'desc' ? 'selectedButton' : ''
+            params.sort_direction === "desc" ? "selectedButton" : ""
           }
         >
           DESC

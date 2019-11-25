@@ -40,10 +40,12 @@ class NewTaskForm extends Component {
     const errors = {};
     
     if (username.length < 1) {
-      errors.username = true;
+      errors.username = 'Введите имя пользователя';
     }
     if (email.length < 1) {
-      errors.email = true;
+      errors.email = 'Введите емайл';
+    } else if (email.length > 100) {
+        errors.email = 'Емайл длинее 100 символов'
     } else {
       let lastAtPos = email.lastIndexOf('@');
       let lastDotPos = email.lastIndexOf('.');
@@ -57,11 +59,13 @@ class NewTaskForm extends Component {
           email.length - lastDotPos > 2
         )
       ) {
-        errors.email = 'uncorrect';
+        errors.email = 'Некорректный емайл';
       }
     }
     if (text.length < 1) {
-      errors.text = true;
+      errors.text = 'Введитие текст задачи';
+    } else if (text.length > 2000) {
+      errors.text = 'Текст задачи длинее 2000 символов'
     }
     if (errors.name || errors.email || errors.text) {
       this.setState({ errors: errors });
@@ -82,20 +86,17 @@ class NewTaskForm extends Component {
         <div className="newTaskBody">
           {form === 'newTask' ? (
             <form onSubmit={this.addTask} className="newTaskForm">
-              {(errors.username || errors.email === true || errors.text) && (
-                <span className="errorNewTask-label">Нужно заполнить все поля</span>
-              )}
-              {errors.email === 'uncorrect' && (
-                <span className="errorNewTask-label">Введите корректный email</span>
-              )}
+              {errors.username && <span className="errorNewTask-label">{errors.username}</span>}
+              {errors.email && <span className="errorNewTask-label">{errors.email}</span>}
+              {errors.text && <span className="errorNewTask-label">{errors.text}</span>}
               <input
                 value={username}
                 onChange={this.handleChange}
                 name="username"
                 autoFocus
                 placeholder="Имя пользователя"
-                className={classnames('newTask-field', {
-                  'newTask-fieldError': errors.username,
+                className={classnames("newTask-field", {
+                  "newTask-fieldError": errors.username,
                 })}
               />
               <input
@@ -103,8 +104,8 @@ class NewTaskForm extends Component {
                 onChange={this.handleChange}
                 name="email"
                 placeholder="Email"
-                className={classnames('newTask-field', {
-                  'newTask-fieldError': errors.email,
+                className={classnames("newTask-field", {
+                  "newTask-fieldError": errors.email,
                 })}
               />
               <input
@@ -112,8 +113,8 @@ class NewTaskForm extends Component {
                 onChange={this.handleChange}
                 name="text"
                 placeholder="Задача"
-                className={classnames('newTask-field', {
-                  'newTask-fieldError': errors.text,
+                className={classnames("newTask-field", {
+                  "newTask-fieldError": errors.text,
                 })}
               />
               <div className="actionButtons">

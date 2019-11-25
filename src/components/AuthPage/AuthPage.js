@@ -73,8 +73,8 @@ class AuthPage extends Component {
           name="name"
           value={name}
           onChange={this.onChange}
-          className={classnames('auth-field', {
-            'error-input': errors.name,
+          className={classnames("auth-field", {
+            "error-input": errors.name,
           })}
         />
         {errors.name && <span className="error-label">{errors.name}</span>}
@@ -84,8 +84,8 @@ class AuthPage extends Component {
           name="password"
           value={password}
           onChange={this.onChange}
-          className={classnames('auth-field', {
-            'error-input': errors.password,
+          className={classnames("auth-field", {
+            "error-input": errors.password,
           })}
         />
         {errors.password && (<span className="error-label">{errors.password}</span>)}
