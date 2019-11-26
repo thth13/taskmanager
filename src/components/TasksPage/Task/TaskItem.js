@@ -103,7 +103,7 @@ class TaskItem extends Component {
           )}
         </div>
         {(text.indexOf('!(edited)!') + 1) ? (
-          <span className="editByAdmin"> Отредактировано администратором</span>
+          <span className="editByAdminChip"> Отредактировано администратором</span>
         ) : <div />}
         <div className="taskInfo">
           <span className="taskInfo-label">
